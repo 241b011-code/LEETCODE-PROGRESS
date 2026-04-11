@@ -1,0 +1,25 @@
+class Solution {
+public:
+  vector<string>numschar={".","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    void comb(string digit,vector<string>&ans,int idx,string com){
+              if(idx==digit.length()){
+                     ans.push_back(com);
+                     return;
+              }
+              string s=numschar[digit[idx]-'0'-1];
+              for(int i=0;i<s.size();i++){
+                     comb(digit,ans,idx+1,com+s[i]);
+              }  
+
+    }
+    vector<string> letterCombinations(string digits) {
+           int n=digits.size(); 
+            vector<string>ans;
+            if(n==0){
+                 return ans;
+            }
+            comb(digits,ans,0,"");
+
+            return ans;
+    }
+};
