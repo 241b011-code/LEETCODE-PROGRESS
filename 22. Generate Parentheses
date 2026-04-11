@@ -1,0 +1,33 @@
+class Solution {
+public:
+  vector<string>ans;
+  bool isvalid(string str){
+          int c=0;
+          for(char a:str){
+              if(a=='('){
+                   c++;
+              }
+              else{
+                 c--;
+              }
+              if(c<0) return false;
+          }
+          return c==0;
+  }
+   void allpara(int n,string p){
+                if(p.size()==n){
+                       if(isvalid(p)){
+                          ans.push_back(p);
+                       }
+                       return;
+                }
+                if(p.size()>0 && p[0]==')') return;
+                allpara(n,p+'(');
+                allpara(n,p+')');
+                
+   }
+    vector<string> generateParenthesis(int n) {
+            allpara(n*2,"");
+            return ans;
+    }
+};
