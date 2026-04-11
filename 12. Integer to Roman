@@ -1,0 +1,76 @@
+class Solution {
+public:
+    string intToRoman(int num) {
+               string ans;
+               int n=num/1000;
+               while(n--){
+                     ans+="M";
+               }
+               num=num%1000;
+               n=num/900;
+               num=num%900;
+               while(n--){
+                  ans+="CM";
+               }
+               n=num/500;
+               num=num%500;
+               while(n--){
+                 ans+="D";
+               }
+               n=num/400;
+               num=num%400;
+               while(n--){
+                 ans+="CD";
+               }
+               n=num/100;
+               num=num%100;
+               while(n--){
+                 ans+="C";
+               }
+               n=num/90;
+               num=num%90;
+               while(n--){
+                 ans+="XC";
+               }
+               n=num/50;
+               num=num%50;
+               while(n--){
+                 ans+="L";
+               }
+               n=num/40;
+               num=num%40;
+               while(n--){
+                 ans+="XL";
+               }
+               n=num/10;
+               num=num%10;
+               while(n--){
+                 ans+="X";
+               }
+                n=num/9;
+               num=num%9;
+               while(n--){
+                 ans+="IX";
+               }
+               n=num/5;
+               num=num%5;
+               while(n--){
+                 ans+="V";
+               }
+               n=num/4;
+               num=num%4;
+               while(n--){
+                 ans+="IV";
+               }
+               while(num--){
+                 ans+="I";
+               }
+                
+                
+                
+                
+               
+          return ans;     
+
+    }
+};
