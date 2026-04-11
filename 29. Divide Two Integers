@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+         double val= (static_cast<double>(dividend)/divisor);
+         if(static_cast<double>(val)>INT_MAX){
+              return INT_MAX;
+         }
+         else if(static_cast<double>(val)<INT_MIN){
+              return INT_MIN;
+         }
+        else 
+           return static_cast<int>(val);
+    }
+};
