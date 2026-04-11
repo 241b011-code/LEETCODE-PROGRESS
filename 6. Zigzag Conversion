@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+                      string ans;
+           int n=s.length();
+          
+           if(n<=2 || numRows==1){
+               return s;
+           }
+           for(int i=0;i<numRows;i++){
+                   int j=i; 
+                   bool isdownup=true;
+                  while(j<n){
+                          ans+=s[j];
+                         if(i==numRows-1){
+                               j+=2*(i);
+                         }
+                         else if(i==0){
+                             j+=2*(numRows-1-i);
+                         }
+                       else{  
+                        if(isdownup){
+                               j+=2*(numRows-1-i);
+                         }
+                        else{
+                             j+=2*i;
+                        } 
+                        isdownup=!isdownup; 
+                       }
+                  }
+           }
+  return ans;
+    }
+    
+};
