@@ -1,0 +1,77 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+   string add(string s1,string s2){
+              string ans;
+              int carry=0;
+              int n1=s1.length()-1,n2=s2.length()-1;
+              while(n1>=0 && n2>=0 ){
+                     int sum=(s1[n1]-'0' +s2[n2]-'0');
+                     char ch=(sum+carry)%10+'0';
+                     ans=ch+ans;
+                     carry=(sum+carry)/10;
+                     n1--;
+                     n2--;
+              }
+              while(n1>=0){
+                     int sum=(s1[n1]-'0');
+                     char ch=(sum+carry)%10+'0';
+                     ans=ch+ans;
+                     carry=(sum+carry)/10;
+                     n1--;
+              }
+              while(n2>=0){
+                     int sum=(s2[n2]-'0');
+                     char ch=(sum+carry)%10+'0';
+                     ans=ch+ans;
+                     carry=(sum+carry)/10;
+                     n2--;
+              }
+               if(carry>0){
+                   char ch=carry+'0';
+                   ans=ch+ans;
+               }
+       return ans;
+    }
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        //    ans->next=new ListNode(5);
+        ListNode*temp=l1;
+        string s1,s2;
+        while(temp!=NULL){
+                int n=temp->val;
+                char ch=n+'0';
+                temp=temp->next;
+                s1=ch+s1;
+
+        }
+        temp=l2;
+        while(temp!=NULL){
+                int n=temp->val;
+                char ch=n+'0';
+                temp=temp->next;
+                s2=ch+s2;
+
+        }
+        string t=add(s1,s2);
+       
+        int siz=t.length()-1;
+        ListNode* ans=new ListNode(t[siz]-'0');
+        ListNode*head=ans;
+        siz--;
+        while(siz>=0){
+               ans->next=new ListNode(t[siz]-'0');
+               ans=ans->next;
+                 siz--;
+        }    
+           return head;
+    }
+};
