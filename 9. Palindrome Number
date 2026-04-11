@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int x2=x;
+        long ans=0;
+        if(x==0){
+            return true;
+        }
+        if(x<0){
+            return false;
+        }
+        else {
+            int l=log10(x)+1;
+            if(l<2){
+                return true;
+            }
+            while(x2!=0){
+                int p=x2%10;
+                x2/=10;
+                ans=ans*10+p;
+            }
+            if(ans==x)
+                return true;
+        }
+        return false;
+    }
+};
