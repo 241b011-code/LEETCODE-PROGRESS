@@ -1,0 +1,27 @@
+class Solution {
+public:
+  set<vector<int>>s;
+    void comb(vector<int>& arr, int idx,int target,vector<vector<int>>&ans,vector<int>com){
+                if(idx==arr.size() || target<0){
+                        return;
+                }
+                if(target==0){
+                     if(s.find(com)==s.end()){
+                        s.insert(com);
+                        ans.push_back({com});
+                     }
+                      return;
+                }
+                com.push_back(arr[idx]);
+                comb(arr,idx+1,target-arr[idx],ans,com);
+                comb(arr,idx,target-arr[idx],ans,com);
+                com.pop_back();
+                comb(arr,idx+1,target,ans,com);
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+              vector<vector<int>>ans;
+              vector<int>idx;
+              comb(candidates,0,target,ans,idx);
+              return ans;
+    }
+};
