@@ -1,0 +1,51 @@
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+          int n1=num1.length();
+          int n2=num2.length();
+          vector<int>mul(n1+n2+1,0);
+          reverse(num1.begin(),num1.end());
+          reverse(num2.begin(),num2.end());
+           for(int i=0;i<n1;i++){
+              vector<int>t(n2,0);
+                 for(int j=0;j<n2;j++){
+                       t[j]=(num1[i]-'0')*(num2[j]-'0'); 
+                 }
+                 int p=i;
+                 for(int k=0;k<n2;k++){
+                      mul[p]+=t[k];
+                      p++;
+                 }
+                
+           }
+            // for(int a:mul){
+            //   cout<<a<<" ";        
+            //  }
+           reverse(mul.begin(),mul.end());
+           for(int i=mul.size()-1;i>0;i--){
+                   int carry=mul[i]/10;
+                   mul[i]=mul[i]%10;
+                   mul[i-1]+=carry;
+           }
+       int check=0;
+     
+       for(int a:mul){
+            if(a!=0){
+                 break;
+            }
+            check++;
+       }
+       if(check==mul.size()){
+            return "0";
+       }
+       string ans="";
+       while(check<mul.size()){
+          ans+=to_string(mul[check]);
+          check++;
+       }
+
+
+
+return ans;
+    }
+};
